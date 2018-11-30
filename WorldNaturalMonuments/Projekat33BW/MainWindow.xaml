@@ -1,0 +1,296 @@
+﻿<Window x:Class="Projekat33BW.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat33BW"
+        mc:Ignorable="d"
+        xmlns:cmd="clr-namespace:Projekat33BW.Komande"
+        xmlns:osnovniPodaci ="clr-namespace:Projekat33BW.OsnovniPodaci"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        Title="Raspored prirodnih spomenika" Height="643.5" Width="1362"
+        ContentRendered="Window_ContentRendered"
+        ResizeMode="NoResize" Closing="Window_Closing" Deactivated="Window_Deactivated" WindowStartupLocation="CenterScreen" GotFocus="Window_GotFocus" >
+    <Window.CommandBindings>
+        <!--Ovaj Executed se nalazi u mainwindow.xaml.cs dokumentu-->
+        <CommandBinding Command="cmd:RoutedCommands.AddEtiketa" Executed="AddEtiketa_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.AddTipSpomenika" Executed="AddTipSpomenika_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.AddSpomenik" Executed="AddSpomenik_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.PrikazSpomenika" Executed="PrikazSpomenika_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:RoutedCommands.TabelaTipova" Executed="CommandBinding_Executed"></CommandBinding>
+        <CommandBinding x:Name="TabelaEtiketa" Command="cmd:RoutedCommands.TabelaEtiketa" Executed="TabelaEtiketa_Executed"></CommandBinding>
+        <CommandBinding x:Name="Help" Command="ApplicationCommands.Help" Executed="Help_Executed"/>
+    </Window.CommandBindings>
+
+    <Grid>
+        <DocumentViewer HorizontalAlignment="Left" Height="5" Margin="142,10,0,0" VerticalAlignment="Top" Width="3"/>
+        <DockPanel HorizontalAlignment="Left" Height="30" LastChildFill="False" VerticalAlignment="Top" Width="1060">
+            <Menu DockPanel.Dock ="Top" VerticalAlignment="Top" Height="30" Margin="2,0,-296,0">
+                <MenuItem 
+                    x:Name="Dodaj_kartica"
+                    Header ="_Dodaj novi ..." Height="30" Width="124">
+
+                    <MenuItem.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="250">
+                                Klikom na karticu otvaraju se dodavanja za: spomenike, tipove i etikete
+                        </TextBlock>
+                    </MenuItem.ToolTip>
+                    <MenuItem Header="_Spomenik" Command="cmd:RoutedCommands.AddSpomenik"/>
+                    <MenuItem Header="_Tip spomenika" Command="cmd:RoutedCommands.AddTipSpomenika"/>
+                    <MenuItem Header="_Etiketu" Command="cmd:RoutedCommands.AddEtiketa"/>
+
+                </MenuItem>
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <MenuItem
+                    x:Name="PrikaziKartica"
+                    Header ="_Prikaži ..." 
+                          Height="30" Width="124">
+                    <MenuItem.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="250" >
+                               Klikom na ovu karticu otvaraju se opcije za otvaranje tabela: spomenika, tipova i etiketa
+                        </TextBlock>
+                    </MenuItem.ToolTip>
+                    <MenuItem Header="_Tabelu spomenika" Command="cmd:RoutedCommands.PrikazSpomenika"/>
+                    <MenuItem Header="_Tabela tipova spomenika" Command="cmd:RoutedCommands.TabelaTipova"/>
+                    <MenuItem Header="_Tabela etiketa" Command="cmd:RoutedCommands.TabelaEtiketa"/>
+                </MenuItem>
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <MenuItem x:Name="Pomoc_kartica" 
+                          
+                          Header="_Pomoći..." Width="126">
+                    <MenuItem.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="250" >
+                              Klikom na ovu karticu otvaraju se opcije za otvaranje: 
+                              tutoriala za ovaj prozor ili celokupne pomoći za glavni prozor
+                        </TextBlock>
+                    </MenuItem.ToolTip>
+                    <MenuItem Header="_O spomenicima i aplikaciji" InputGestureText="F1" Click="Help_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images\question-mark.png" Width="12" Height="12"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="Tutorial" Header="Tutorial" Click="TutorialButton_Click"></MenuItem>
+                </MenuItem>
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            </Menu>
+
+            <Canvas x:Name="Canvas"  GiveFeedback="Canvas_GiveFeedback" MouseRightButtonUp="Canvas_MouseRightButtonUp" DockPanel.Dock="Right" ClipToBounds="True" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" PreviewMouseMove="Canvas_PreviewMouseMove" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" Drop="Image_Drop" AllowDrop="True" DragEnter="Image_DragEnter" Margin="0,0,0,-581" Width="770">
+                <Canvas.Background>
+                    <!--ImageBrush x:Name="MapaImage" Source="Images\worldMap.jpg" /-->
+                    <ImageBrush x:Name="MapaImage" ImageSource="Images/worldMap.jpg"/>
+                </Canvas.Background>
+                <Canvas.ToolTip>
+                    <TextBlock TextWrapping="Wrap" Width="200">
+                                Ovo je mapa sveta na koju možete prevlačiti spomenike. 
+                                Spomenici se mogu privlačiti sa stabla iz "Liste spomenika po tipu" ili se mogu 
+                                ponovo prevlačiti ikone sa ove mape na nove pozicije unutar mape. Pozicija će biti ažurirana za taj spomenik.
+                    </TextBlock>
+                </Canvas.ToolTip>
+                <Canvas.Resources>
+                    <ContextMenu x:Key="CanvasSpomenikContext" StaysOpen="true">
+                        <MenuItem x:Name="IzmeniSpomenikCanvasa" Header="Izmeni spomenik" Click="IzmeniSpomenikCanvasa_Click"/>
+                        <MenuItem x:Name="ObrisiSpomenikCanvasa" Header="Obriši spomenik" Click="ObrisiSpomenikCanvasa_Click"/>
+                        <MenuItem x:Name="UkloniSaMape" Header="Ukloni spomenik sa mape" Click="UkloniSaMape_Click"/>
+                    </ContextMenu>
+                </Canvas.Resources>
+            </Canvas>
+
+            <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left" Height="576" VerticalAlignment="Top" Width="267" Margin="0,5,0,-581">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="0,5,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button x:Name="DodajSpomenikToolbar" BorderThickness="0.0" Content="Dodaj spomenik" Command="cmd:RoutedCommands.AddSpomenik" Margin="10,5,10,0">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                            Klikom na ovo dugme otvarate formu u vidu prozora za unos podataka za spomenik. 
+                            Spomenik se prikazuje u tabeli spomenika koji možete otvoriti pritiskom na dugme ispod "Prikaz spomenika".
+                            Možete istu akciju dobiti i prečicom tj. kombinacijom tastera na tastaturi CTRL+S.
+                            Prethodni rad na glavnom prozoru neće biti izgubljen prilikom ulaska na ovaj prozor.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
+                <Button BorderThickness="0.0"
+                    x:Name="DodajTipSpomenikaToolbar"
+                    Content="Dodaj tip spomenika" Command="cmd:RoutedCommands.AddTipSpomenika" Margin="10,5,10,0">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                            Klikom na ovo dugme otvarate formu u vidu prozora za unos podataka za tip spomenika.
+                            Tip spomenika se prikazuje u tabeli tipova spomenika koji možete otvoriti pritiskom na dugme ispod "Prikaz tipova spomenika"
+                            Možete istu akciju dobiti i prečicom tj. kombinacijom tastera na tastaturi CTRL+T.
+                            Prethodni rad na glavnom prozoru neće biti izgubljen prilikom ulaska na ovaj prozor.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
+                <Button BorderThickness="0.0"
+                    x:Name="DodajEtiketuToolbar"
+                    Content="Dodaj etiketu"  Command="cmd:RoutedCommands.AddEtiketa" Margin="10,5,10,0">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                            Klikom na ovo dugme otvarate formu u vidu prozora za unos podataka za etiketu.
+                            Spomenik se prikazuje u tabeli etiketa koji možete otvoriti pritiskom na dugme ispod "Prikaz etiketa"
+                            Možete istu akciju dobiti i prečicom tj. kombinacijom tastera na tastaturi CTRL+E.  
+                            Prethodni rad na glavnom prozoru neće biti izgubljen prilikom ulaska na ovaj prozor.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
+                <Button BorderThickness="0.0"
+                    x:Name="PrikazSpomenikaToolbar"
+                    Content="Prikaz spomenika" Command="cmd:RoutedCommands.PrikazSpomenika" Margin="10,5,10,0">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                                    Klikom na ovo dugme otvarate tabelu spomenika u vidu novog prozora.
+                                    Prethodni rad na glavnom prozoru neće biti izgubljen prilikom ulaska na ovaj prozor.
+                                    Možete istu akciju dobiti i prečicom tj. kombinacijom tastera na tastaturi ALT+S.  
+                                    Prethodni rad na glavnom prozoru neće biti izgubljen prilikom ulaska na ovaj prozor.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
+                <Button BorderThickness="0.0"
+                    x:Name="TabelaSpomenikaToolbar"
+                    Content="Prikaz tipova spomenika" Margin="10,5,10,0" Click="Button_Click">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                                Klikom na ovo dugme otvarate tabelu tipova spomenika u vidu novog prozora.
+                                Prethodni rad na glavnom prozoru neće biti izgubljen prilikom ulaska na ovaj prozor.
+                             Možete istu akciju dobiti i prečicom tj. kombinacijom tastera na tastaturi ALT+T.  
+                            Prethodni rad na glavnom prozoru neće biti izgubljen prilikom ulaska na ovaj prozor.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
+                <Button BorderThickness="0.0"
+                    x:Name="TabelaEtiketaToolbar"
+                    Content="Prikaz etiketa" Margin="10,5,10,0" Click="Button_Click_1">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                                    Klikom na ovo dugme otvarate tabelu etiketa u vidu novog prozora.
+                                    Prethodni rad na glavnom prozoru neće biti izgubljen prilikom ulaska na ovaj prozor.
+                             Možete istu akciju dobiti i prečicom tj. kombinacijom tastera na tastaturi ALT+E.  
+                            Prethodni rad na glavnom prozoru neće biti izgubljen prilikom ulaska na ovaj prozor.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button x:Name="Pomoc" BorderThickness="0.0" Content="Pomoć" Margin="10,5,10,0" Click="Pomoc_Click">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                                    Ovde se nalazi dodatna pomoć koja može biti korisna
+                                    u vezi znanja o spomenicima, celokupne aplikacije
+                                    ili celokupna dokumentacija ovog tutoriala(ukoliko postoji). 
+                                    Takođe, pritiskom na dugme F1 na tastaturi možete
+                                    otvoriti isti prozor koji se dobija klikom na ovo dugme.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
+                <Button x:Name="TutorialButton" BorderThickness="0.0" Content="Tutorial" Margin="10,5,10,0" Click="TutorialButton_Click">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                                    Klikom na ovo dugme možete pokrenuti tutorial za ovaj prozor.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
+                <GroupBox 
+                    x:Name="GroupBoxStablo"
+                    Height="374">
+                    <GroupBox.Header>
+                        <Label>Lista spomenika po tipu</Label>
+                    </GroupBox.Header>
+                    <GroupBox.ToolTip>
+                        <StackPanel>
+                            <TextBlock TextWrapping="Wrap" Width="400">
+                                    Ovde se nalazi stablo sa hijerarhijom takvom da tip spomenika 
+                                    sadrži sve spomenike koji spadaju u taj tip.
+                                    Da biste otvorili koje spomenike tip spomenika sadrži možete kliknuti na
+                                    strelicu levo od tipa da biste proširili pogled na spomenike ovog tipa spomenika.
+                            </TextBlock>
+
+                            <TextBlock TextWrapping="Wrap" Width="400">
+                                    Odavde možete početi rad 
+                                    sa prevlačenjem spomenika na mapu sveta.
+                                    Ispod je predstavljeno kako to izgleda u praksi.
+                            </TextBlock>
+                            <!--Image Source="Images/dragndrop.gif" Width="200" Height="100">
+                                
+                            </-->
+                            <Image gif:ImageBehavior.AnimatedSource="Images/dragndrop.gif" Width="400" Height="150" />
+                        </StackPanel>
+                    </GroupBox.ToolTip>
+                    <ScrollViewer Margin="0,0,10,11">
+                        <StackPanel Height="366" Width="272">
+                            <TreeView x:Name ="StabloSpomenika" ItemsSource="{Binding ListaTipovaSpomenika, UpdateSourceTrigger=PropertyChanged}" MouseDoubleClick="StabloSpomenika_MouseDoubleClick"  SelectedItemChanged="StabloSpomenika_SelectedItemChanged" GiveFeedback="Canvas_GiveFeedback" PreviewMouseLeftButtonDown="StabloSpomenika_PreviewMouseLeftButtonDown" PreviewMouseMove="StabloSpomenika_PreviewMouseMove" Margin="0,15,48,0" Height="335" >
+                                <TreeView.Resources>
+                                    <ContextMenu x:Key ="SpomenikContext"  StaysOpen="true">
+                                        <MenuItem x:Name="IzmeniSpomenik" Header="Izmeni spomenik" Click="IzmeniSpomenik_Click"/>
+                                        <MenuItem x:Name="ObrisiSpomenik" Header="Obriši spomenik" Click="ObrisiSpomenik_Click"/>
+                                    </ContextMenu>
+                                    <ContextMenu x:Key ="NoTypeContext"  StaysOpen="true">
+                                        <MenuItem x:Name="DodajSpomenikNoType" Header="Dodaj novi spomenik" Click="DodajSpomenik_Click"/>
+                                    </ContextMenu>
+                                    <ContextMenu x:Key="TipSpomenikaContext" StaysOpen="true">
+                                        <MenuItem x:Name="DodajSpomenik" Header="Dodaj novi spomenik" Click="DodajSpomenik_Click"/>
+                                        <MenuItem x:Name="IzmeniTipSpomenika" Header="Izmeni tip spomenika" Click="IzmeniTipSpomenika_Click"/>
+                                        <MenuItem x:Name="ObrisiTipSpomenika" Header="Obriši tip spomenika" Click="ObrisiTipSpomenika_Click"/>
+                                    </ContextMenu>
+                                    <HierarchicalDataTemplate DataType="{x:Type osnovniPodaci:TipSpomenika}" ItemsSource="{Binding ListaSpomenikaOvogTipa, UpdateSourceTrigger=PropertyChanged}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel.ToolTip>
+                                                <StackPanel>
+                                                    <TextBlock TextWrapping="Wrap" Width="200" Foreground="Blue" Text="Za više informacija o ovom tipu klikni dva puta levim tasterom miša na sliku da uđeš u režim za menjanje tipa spomenika."/>
+                                                    <TextBlock TextWrapping="Wrap" Width="200" Foreground="Red" Text="Napomena: ovo ne važi za tip spomenika 'Bez tipa'."/>
+                                                    <Image Source="{Binding PutanjaIkone}" Width="100" Height="100"/>
+                                                    <TextBlock Text="Ime tipa: "/>
+                                                    <TextBox Text="{Binding ImeTipa}"/>
+                                                    <TextBlock Text="Opis tipa: "/>
+                                                    <TextBox Text="{Binding OpisTipa}"/>
+                                                </StackPanel>
+                                            </StackPanel.ToolTip>
+                                            <Image Source="{Binding PutanjaIkone}" Width="20" Height="20"/>
+                                            <TextBlock Text="Tip: "/>
+                                            <TextBlock Text="{Binding ImeTipa}"/>
+                                        </StackPanel>
+                                    </HierarchicalDataTemplate>
+                                    <DataTemplate DataType="{x:Type osnovniPodaci:Spomenik}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel.ToolTip>
+                                                <StackPanel>
+                                                    <TextBlock TextWrapping="Wrap" Width="200" Foreground="Blue" Text="Za više informacija o ovom spomeniku klikni dva puta levim tasterom miša na sliku da uđeš u režim za menjanje spomenika."/>
+                                                    <Image Source="{Binding PutanjaIkonice}" Width="100" Height="100"/>
+                                                    <TextBlock Text="Ime spomenika: "/>
+                                                    <TextBox Text="{Binding ImeSpomenika}"/>
+                                                    <TextBlock Text="Opis spomenika: "/>
+                                                    <TextBox Text="{Binding OpisSpomenika}"/>
+                                                </StackPanel>
+                                            </StackPanel.ToolTip>
+                                            <Image Source="{Binding PutanjaIkonice, UpdateSourceTrigger=PropertyChanged}" Width="20" Height="20"/>
+                                            <TextBlock Text="Spomenik: "/>
+                                            <TextBlock Text="{Binding ImeSpomenika, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </TreeView.Resources>
+                            </TreeView>
+                        </StackPanel>
+                    </ScrollViewer>
+                </GroupBox>
+            </StackPanel>
+
+        </DockPanel>
+        <Canvas x:Name="NotificationBar" HorizontalAlignment="Left" Height="569" Margin="1075,36,0,0" VerticalAlignment="Top" Width="271">
+            <Canvas.ToolTip>
+                <TextBlock TextWrapping="Wrap" Width="200">
+                                Prevlačenje spomenika preko drugog spomenika
+                                na mapi sveta nije dozvoljeno.
+                                U slučaju da pokušate da prevučete više puta,
+                                ovde ćete dobiti upozorenje o nemogućnosti prevlačenja.
+                </TextBlock>
+            </Canvas.ToolTip>
+        </Canvas>
+
+        <!--Border BorderThickness="1">
+            <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="406" Margin="-1,34,0,0" Stroke="Black" VerticalAlignment="Top" Width="212"/>
+        </Border-->
+
+
+
+    </Grid>
+</Window>

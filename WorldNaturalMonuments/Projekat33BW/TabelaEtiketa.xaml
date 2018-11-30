@@ -1,0 +1,153 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat33BW"
+        xmlns:Komande="clr-namespace:Projekat33BW.Komande" x:Class="Projekat33BW.TabelaEtiketa"
+        xmlns:cmd="clr-namespace:Projekat33BW.Komande"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
+        mc:Ignorable="d"
+        Title="TabelaEtiketa" ResizeMode="NoResize" Deactivated="Window_Deactivated" ContentRendered="Window_ContentRendered" Closing="Window_Closing" Height="600" Width="654" WindowStartupLocation="CenterScreen">
+
+    <Window.CommandBindings>
+        <!--Ovaj Executed se nalazi u mainwindow.xaml.cs dokumentu-->
+        <CommandBinding Command="cmd:RoutedCommands.AddEtiketa" Executed="AddEtiketa_Executed"></CommandBinding>
+        <CommandBinding x:Name="Help" Command="ApplicationCommands.Help" Executed="Help_Executed"/>
+     </Window.CommandBindings>
+    
+    <Window.Resources>
+        <local:CountGreaterThanZeroConverter x:Key="CountGreaterThanZeroConverter" />
+    </Window.Resources>
+
+
+
+    <Grid Height="613" Width="648">
+        <DataGrid x:Name="TabelaEtikete" 
+                  CanUserResizeColumns="False"  MouseUp="TabelaEtikete_MouseUp" AlternationCount="2" AlternatingRowBackground="LightCyan" AutoGeneratingColumn ="TabelaEtiketeKolone_AutoGeneratingColumn" ItemsSource="{Binding ListaEtiketa ,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Margin="10,10,26,293">
+            <DataGrid.ToolTip>
+                <TextBlock TextWrapping="Wrap" Width="200">
+                         Ovde se nalazi tabela sa podacima o etiketi. Može se samo čitati, a potencijalne izmene možete vršiti klikom na red koji želite menjati pa zatim pritiskom dugmeta 'Izmeni etiketu'.
+                </TextBlock>
+            </DataGrid.ToolTip>
+        </DataGrid>
+        <StackPanel Margin="10,339,505,109" Orientation="Vertical">
+            <Button x:Name="Dodaj" BorderThickness="0.0"
+                    Content="Dodaj etiketu" Margin="0,0,0,5" Command="cmd:RoutedCommands.AddEtiketa" Height="24">
+                <Button.ToolTip>
+                    <TextBlock TextWrapping="Wrap" Width="200">
+                            Klikom na ovo dugme možete početi kreiranje i dodavanje novog reda podatka u tabeli, što se vrši u novom prozoru.Dodavanje će uticati na dodavanje podatka u celoj aplikaciji. Stari prozor neće biti zatvoren ili obrisan. Dodavanju etiketa možete pristupiti i prečicom CTRL + E dugmadi na tastaturi.
+                    </TextBlock>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="Izmeni" BorderThickness="0.0"
+                    Content="Izmeni etiketu" IsEnabled="{Binding ItemsSource.Count, Converter={StaticResource CountGreaterThanZeroConverter}, ElementName=TabelaEtikete, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,5" Click="IzmeniEtiketu_Click" Height="24">
+                <Button.ToolTip>
+                    <TextBlock TextWrapping="Wrap" Width="200">
+                         Klikom na ovo dugme možete početi izmenu postojećeg, selektovanog reda podatka tabele, što se vrši u novom prozoru. Izmena će uticati na promenu selektovanog podataka u celoj aplikaciji. Stari prozor neće biti zatvoren ili obrisan.
+                    </TextBlock>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="Obrisi" BorderThickness="0.0"
+                    Content="Obriši etiketu" IsEnabled="{Binding ItemsSource.Count, Converter={StaticResource CountGreaterThanZeroConverter}, ElementName=TabelaEtikete, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,5" Click="ObrisiEtiketu_Click" Height="24">
+                <Button.ToolTip>
+                    <TextBlock TextWrapping="Wrap" Width="200">
+                            Klikom na ovo dugme možete obrisati postojeći,selektovani red u gornjoj tabeli. Time se taj podatak briše iz celokupne aplikacije i računara.
+                    </TextBlock>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="Cancel" BorderThickness="0.0"
+                    Margin="0,0,0,5" Content="Odustani" Click="Cancel_Click" Height="24">
+                <Button.ToolTip>
+                    <TextBlock TextWrapping="Wrap" Width="200">
+                              Na ovo ili na X dugme u gornjem desnom uglu se izlazi iz ovog prozora i vraća u prozor iz kojeg ste pozvali ovaj prikaz. Sva prethodna pretraga koju ste uneli, će biti poništena, i tabela će biti sačuvana onako kako je izgledala pre pretrage, ali ne i pre izmena koje ste vršili nad podacima pojedinačno u tabeli.
+                    </TextBlock>
+                </Button.ToolTip>
+            </Button>
+
+        </StackPanel>
+        <GroupBox x:Name="PretragaOkvir"  Margin="165,342,26,104" 
+                  >
+            <GroupBox.ToolTip>
+                <TextBlock TextWrapping="Wrap" Width="200">
+                       Sve unutar ovog okvira predstavlja prostor za pretragu onoga što želite pretražiti. Pretraga se inicira pritiskom na dugme 'Pretraži' unutar ovog okvira, a poništava pritiskomo na dugme 'Poništi pretragu'. Pretraga vrši privremenu promenu tabela podataka iznad, ali ne briše ništa iz nje.
+
+                </TextBlock>
+            </GroupBox.ToolTip>
+            <GroupBox.Header>
+                Pretraga tabele po svim kolonama i vrstama
+            </GroupBox.Header>
+            <Canvas Margin="0,-16,-2,-12">
+                <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="3" Height="133" Margin="0" Width="162" Canvas.Left="303" Canvas.Top="-332"/>
+                <TextBox x:Name="SearchBox" ToolTipService.ShowDuration="12000"
+                         TextChanged="SearchBox_TextChanged" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding Path=SearchWord}" VerticalAlignment="Top" Width="120" Canvas.Left="1" Canvas.Top="65">
+                    <TextBox.ToolTip>
+                        <StackPanel>
+                            <TextBlock TextWrapping="Wrap" Width="200">
+                              Unosom sa tastature možete uneti deo reči po kojem Vam je poznata bilo kakva informacija o podacima u tabeli. Ovo možete pogledati i u helpu.
+                            </TextBlock>
+                            <Image gif:ImageBehavior.AnimatedSource="Images/primer_etiketa_pretraga.gif" Width="400" Height="300" />
+                        </StackPanel>
+                    </TextBox.ToolTip>
+                </TextBox>
+                <Button x:Name="Filter" BorderThickness="0.0"
+                        Click="Filter_Click" Content="Pretraži" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Height="25" Canvas.Left="10" Canvas.Top="118">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                                 Klikom na ovo dugme možete početi pretragu u tabeli, i kao rezultat ćete dobiti podatk po reči po kojoj ste tražili bilo kakvu informaciju.
+                        </TextBlock>
+                    </Button.ToolTip>
+                </Button>
+                <Label Content="Pretraži po reči: " HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Canvas.Top="34"/>
+                <Button x:Name="PonistiFilter" BorderThickness="0.0"
+                        Canvas.Left="324" Canvas.Top="118" Height="25" Width="96" Click="PonistiFilter_Click">
+                    <Button.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                               Klikom na ovo dugme poništavate rezultate pretrage i vraća se tabela onako kako je inicijalno izgledala pre vršenja pretrage.
+                        </TextBlock>
+                    </Button.ToolTip>
+                    Poništi pretragu</Button>
+                <CheckBox x:Name="CaseInSensitive"  
+                          Click="CaseInSensitive_Click" Content="Ignoriši mala/velika slova?" Canvas.Left="148" Canvas.Top="85">
+                    <CheckBox.ToolTip>
+                        <TextBlock TextWrapping="Wrap" Width="200">
+                                Klikom na ovaj kvadrat možete naglasiti da želite ili ne želite da deo reči po kojoj tražite bude osetljiv na mala ili velika slova. Primer, pretragom 'mob' za reči 'Automobil' i 'Moba', u pretrazi neosetljivoj na mala ili velika slova, će se kao rezultat pretrage naći obe reči, dok će u osetljivoj pretrazi na mala ili velika slova, kao rezultat dobiti samo 'Automobil'.
+
+                        </TextBlock>
+                    </CheckBox.ToolTip>
+                </CheckBox>
+                <CheckBox x:Name="Obelezi" 
+                          Content="Obeleži traženu reč" Click="CheckBox_Click" Canvas.Left="148" Canvas.Top="65">
+                    <CheckBox.ToolTip>
+                        <StackPanel>
+                            <TextBlock TextWrapping="Wrap" Width="200">
+                                  Klikom na ovaj kvadrat reč u tabeli se može obeležiti pozadinskom bojom onog dela reči u datoj tabeli koji Vam je poznat. Za demonstraciju, unesite u polje za unos neko slovo koje se spominje u tabeli, i kliknite na ovaj kvadrat.
+                        
+                            </TextBlock>
+                        </StackPanel>
+                    </CheckBox.ToolTip>
+                </CheckBox>
+            </Canvas>
+        </GroupBox>
+        <Button x:Name="Pomoc" Content="Pomoć" Click="Pomoc_Click" BorderThickness="0.0"
+                HorizontalAlignment="Left" Margin="10,494,0,0" VerticalAlignment="Top" Width="133">
+            <Button.ToolTip>
+                <TextBlock TextWrapping="Wrap" Width="200" >
+                       Ovde se nalazi dodatna pomoć koja može biti korisna u vezi znanja o  etiketama i prikazima, ili celokupna dokumentacija ovog tutoriala(ukoliko postoji). Takođe, pritiskom na dugme F1 na tastaturi možete otvoriti isti prozor koji se dobija klikom na ovo dugme.
+                </TextBlock>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="TutorialButton" Click="Tutorial_Click" Content="Tutorial" BorderThickness="0.0"
+                HorizontalAlignment="Left" Margin="10,519,0,0" VerticalAlignment="Top" Width="133">
+            <Button.ToolTip>
+                <TextBlock TextWrapping="Wrap" Width="200">
+                      Klikom na ovo dugme možete pokrenuti ovaj tutorial.  
+                </TextBlock>
+            </Button.ToolTip>
+        </Button>
+
+    </Grid>
+
+
+</Window>

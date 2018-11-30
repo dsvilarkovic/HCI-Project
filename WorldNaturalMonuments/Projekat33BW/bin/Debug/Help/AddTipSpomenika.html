@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Rad sa tipovima spomenika</title>
+	<style>
+		img{width:400px; height:200px};
+		body {font-family: Helvetica};
+	</style>
+</head>
+<body>
+    <p><a href="MainWindow.html">Pocetna</a>&nbsp;&nbsp;<a href="AddSpomenik.html">Spomenici</a>&nbsp;&nbsp;<a href="AddTipSpomenika.html">Tipovi spomenika</a>&nbsp;&nbsp;<a href="AddEtiketa.html">Etikete</a>&nbsp;&nbsp;<a href="PrikazSpomenika.html">Tabela spomenika</a>&nbsp;&nbsp;<a href="TabelaTipova.html">Tabela tipova spomenika</a>&nbsp;&nbsp;<a href="TabelaEtiketa.html">Tabela etiketa</a></p>
+    <h1>Rad sa tipovima spomenika</h1>
+	<img src = "addtipspomenika_osnovni.png" width= "800" height="500"> </img>
+	<p> <b> <i>Slika: forma dodavanja ili ažuriranja tipa spomenika </i> </b>
+	
+	<h2>Teorijski deo o tipovima spomenika (sa početne stranice pomoći): </h2>
+			<blockquote>
+			<p> 
+				Kao što je već navedeno, spomenik prirode može da bude, ali nije obavezno:
+						<ul>
+						<li>geološki (hidrogeološki, paleontološki, petrološka, mineraloški, strukturnogeološki i dr)</li>
+						<li>geomorfološki</li>
+						<li>speleološki (pećina, jama i dr)</li>
+						<li>hidrološki (ceo ili deo vodotoka, kao slap, jezero dr.)</li>
+						<li>botanički (retki ili značajni primerci biljnog sveta, kao pojedinačno stablo, drvoredi, parkovi, botaničke bašte i dr).</li>
+						</ul>
+				Napomena: ne moraju postojati u okviru aplikacije, sami birate šta ćete dodavati i menjati u okviru aplikacije.
+				<br>
+				U okviru aplikacije:
+				<blockquote>
+					<i>
+						Tip spomenika je opisan preko svoje jedinstvene ljudski-čitljive oznake koju unosi korisnik,
+						imena, ikonice, i opisa. Ikonica je sličica koja se učitava i koja se koristi da se taj tip 
+						spomenika označi na mapi. 					
+					</i>
+				</blockquote>
+			</p>
+			</blockquote>
+	<h2>Aplikativni deo rada sa tipovima spomenika: </h2>
+    <div>
+        Pomoću ovog dijaloga možete dodati ili ažurirati tip spomenika popunjavanjem polja i pritiskom na dugme "Sačuvaj". Obavezno polje za unos je "Id oznaka tipa" i "Ime tipa", ostala
+        polja su opciona.
+
+        <p>Polja za unos:</p>
+        <ul>
+            <li><b>"Id oznaka tipa"</b> - Jedinstvena ljudski čitljiva oznake tipa spomenika u okviru aplikacije.</li>
+            <li><b>"Ime tipa"</b> - Proizvoljan naziv tipa spomenika.</li>
+            <li>
+				<b>"Ikonica tipa"</b> - Klikom na dugmi "Nađi ikonicu" može se pristupiti slikama koje postoje na računaru odakle pokrećete aplikaciju.
+				Animacija ispod služi da predstavi kako bi to moglo da izgleda, ovde konkretno za tip spomenika, a na animaciji za spomenik (isti način).
+				
+				<p><img src = "nadjiikonu.gif" /> </p>
+				<p> <b> <i>Animacija: Primer dodavanje ikonice spomeniku.
+				Klikom se otvara forma sa izbor slike iz nekog fajla iz računara i na tom ili nekom drugom mestu možete odabrati 
+				ikonicu koja vam odgovara klikom na nju jednom pa pritiskom dugmeta "Open", ili dvoklikom na sliku se automatski dodaje 
+				na formu za spomenik.</i> </b>
+			</li>
+            <li><b>"Opis"</b> - Predstavlja detaljniji opis datog tipa spomenika.</li>
+        </ul>
+
+        <h4>
+		Pritiskom na dugme "Potvrdi" će se dodati novi tip spomenika. <br>
+		Pritiskom na dugme "Odustani" prozor se zatvara bez čuvanja podataka koje ste uneli. <br>
+		Pritiskom na dugme "Tutorial" otvoriće se odgovarajući tutorial za ovaj prozor ukoliko postoji.<br>
+		Pritiskom na dugme "Pomoć" otvoriće se ponovo ova pomoć. Pomoći možete pristupiti i pritiskom na dugme na tastaturi F1 iz forme spomenika.
+		</h4>
+    </div>
+	<h2>Tutorial za ovaj prozor</h2>
+	Ovde će biti opisano komponenta po komponenta koja se spominje kao i njihov celokupan opis: <br>
+	<ul>
+		<li><b>"Id Tipa"</b> -                     Unosom sa tastature unesi identifikaciju tipa spomenika,  potrebno je da bude jedinstvena. Klikom van ovog polja, gubi se fokus sa ovog polja i ne može se više unositi. Kliktom na ovo polje se možes ponovo vratiti na unos.
+ </li>
+		<li><b>"Ime Tipa"</b> -                      Unosom sa tastature u ovo polje možete uneti vama prepoznatljivo ime po kojem će te pamtiti kreirani podatak.
+</li>
+		<li><b>"Nađi ikonicu"</b> -                         Klikom na ovo dugme možete odabrati u računaru željenu sliku za ovaj podatak. Slika će se prikazati u velikom polju i tako će izgledati u daljem radu. Kliknite na 'Sledeći' ispod ovog teksta da biste videli okvir gde će se pojaviti slika.
+ </li>
+		<li><b>"PutanjaIkone"</b> -                          Vizuelni prikaz odabrane slike.
+</li>
+		<li><b>"Opis Tipa"</b> -                            Unosom sa tastature potrebno je uneti dodatne informacije o ovom podatku. Klikom van ovog polja, gubi se fokus sa ovog polja. Kliktom na ovo polje se možete ponovo vratiti na unos.
+ </li>
+		<li><b>"Potvrdi"</b> -                          Klikom na ovo dugme se potvrđuje pravljenje novog podatka sa unetim sadržajem u okviru ovog prozora. Podatak će postojati u okviru tabele.
+</li>
+		<li><b>"Otkaži"</b> -                         Klikom na ovo dugme se otkazuje kreiranje novog podatka i vraća se u prozor odakle je otvorena ovaj prozor.
+ </li>
+		<li><b>"Pomoć"</b> -                      Ovde se nalazi dodatna pomoć koja može biti korisna u vezi znanja o tipovima spomenika, ili celokupna dokumentacija ovog tutoriala (ukoliko postoji). Takođe, pritiskom na dugme F1 na tastaturi možete otvoriti isti prozor koji se dobija klikom na ovo dugme.
+</li>
+		<li><b>"Tutorial"</b> -                     Klikom na ovo dugme možete pokrenuti tutorial za ovaj prozor.
+ </li>
+	</ul>
+</body>
+</html>

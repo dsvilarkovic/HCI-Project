@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Prikaz etiketa</title>
+    <style>
+		img{width:800px; height:400px};
+		body {font-family: Helvetica};
+	</style>
+</head>
+<body>
+    <p><a href="MainWindow.html">Pocetna</a>&nbsp;&nbsp;<a href="AddSpomenik.html">Spomenici</a>&nbsp;&nbsp;<a href="AddTipSpomenika.html">Tipovi spomenika</a>&nbsp;&nbsp;<a href="AddEtiketa.html">Etikete</a>&nbsp;&nbsp;<a href="PrikazSpomenika.html">Tabela spomenika</a>&nbsp;&nbsp;<a href="TabelaTipova.html">Tabela tipova spomenika</a>&nbsp;&nbsp;<a href="TabelaEtiketa.html">Tabela etiketa</a></p>
+    <h1>Prikaz etiketa</h1>
+	<img src= "primer_etiketa_pretraga.gif"/>
+	<p> <b> <i>Slika: Primer izvršavanje pretrage nad etiketama </i> </b>
+	
+    <div>
+        Pomoću ovog dijaloga možete videti prikaz svih etiketa. 
+        Postoji pretraga etiketa, koja se pokreće klikom na dugme "Pretraži", nakon čega se prikažu sve etikete u tabeli, koji odgovaraju unosu teksta u polju za pretragu.
+        Da bismo poništili pretragu, moramo pritisnuti dugme "Poništi pretragu", čime se pogled na tabelu vraća na tabelu svih etiketa koje postoje u aplikaciji, po svim kriterijumima.
+
+
+        <p>Akcije nad etiketama:</p>
+        <ul>
+            <li><b>"Dodaj etiketu"</b> - Otvara prozor za unos nove etikete.  Etiketa se može dodati i kombinacijom dugmadi sa tastature CTRL+E.</li>
+            <li><b>"Izmeni etiketu"</b>
+                - Otvara prozor za ažuriranje prethodno odabrane etikete u okviru tabele.</li>
+            <li><b>"Obriši etiketu"</b>
+            - Uklanja se prethodno odabranu etiketu u okviru tabele.</li>
+        </ul>
+
+    </div>
+	
+	<h2>Tutorial tabele etiketa</h2>
+	Ovde će biti opisano komponenta po komponenta koja se spominje kao i njihov celokupan opis: <br>
+	<ul>
+            <li><b>"Tabela etiketa"</b> - Ovde se nalazi tabela sa podacima o etiketi. Može se samo čitati, a potencijalne izmene možete vršiti klikom na red koji želite menjati pa zatim pritiskom dugmeta 'Izmeni etiketu'.</li>
+			<li><b>"Dodaj etiketu"</b> -  Klikom na ovo dugme možete početi kreiranje i dodavanje novog reda podatka u tabeli, što se vrši u novom prozoru.Dodavanje će uticati na dodavanje podatka u celoj aplikaciji. Stari prozor neće biti zatvoren ili obrisan. Dodavanju etiketa možete pristupiti i prečicom CTRL + E dugmadi na tastaturi.
+ </li>
+			<li><b>"Izmeni etiketu"</b> - Klikom na ovo dugme možete početi izmenu postojećeg, selektovanog reda podatka tabele, što se vrši u novom prozoru. Izmena će uticati na promenu selektovanog podataka u celoj aplikaciji. Stari prozor neće biti zatvoren ili obrisan.
+</li>
+			<li><b>"Obriši etiketu"</b> - Klikom na ovo dugme možete obrisati postojeći,selektovani red u gornjoj tabeli. Time se taj podatak briše iz celokupne aplikacije i računara.
+</li>
+			<li><b>"Odustani"</b> - Na ovo ili na X dugme u gornjem desnom uglu se izlazi iz ovog prozora i vraća u prozor iz kojeg ste pozvali ovaj prikaz. Sva prethodna pretraga koju ste uneli, će biti poništena, i tabela će biti sačuvana onako kako je izgledala pre pretrage, ali ne i pre izmena koje ste vršili nad podacima pojedinačno u tabeli.
+</li>
+			<li><b>"Pretraga tabele po svim kolonama i vrstama"</b> - Unosom sa tastature možete uneti deo reči po kojem Vam je poznata bilo kakva informacija o podacima u tabeli. Ovo možete pogledati i u helpu.
+</li>
+			<li><b>"Pretraži po reči"</b> - Unosom sa tastature možete uneti deo reči po kojem Vam je poznata bilo kakva informacija o podacima u tabeli. Ovo možete pogledati i u helpu.
+ </li>
+			<li><b>"Obeleži traženu reč"</b> -  Klikom na ovaj kvadrat reč u tabeli se može obeležiti pozadinskom bojom onog dela reči u datoj tabeli koji Vam je poznat. Za demonstraciju, unesite u polje za unos neko slovo koje se spominje u tabeli, i kliknite na ovaj kvadrat.
+ </li>
+			<li><b>"Ignoriši mala/velika slova?"</b> -  Klikom na ovaj kvadrat možete naglasiti da želite ili ne želite da deo reči po kojoj tražite bude osetljiv na mala ili velika slova. Primer, pretragom 'mob' za reči 'Automobil' i 'Moba', u pretrazi neosetljivoj na mala ili velika slova, će se kao rezultat pretrage naći obe reči, dok će u osetljivoj pretrazi na mala ili velika slova, kao rezultat dobiti samo 'Automobil'.
+</li>
+			<li><b>"Pretraži"</b> - Klikom na ovo dugme možete početi pretragu u tabeli, i kao rezultat ćete dobiti podatk po reči po kojoj ste tražili bilo kakvu informaciju.
+</li>
+			<li><b>"Poništi pretragu"</b> -  Klikom na ovo dugme poništavate rezultate pretrage i vraća se tabela onako kako je inicijalno izgledala pre vršenja pretrage.
+ </li>
+			<li><b>"Pomoć"</b> - Ovde se nalazi dodatna pomoć koja može biti korisna u vezi znanja o  etiketama i prikazima, ili celokupna dokumentacija ovog tutoriala(ukoliko postoji). Takođe, pritiskom na dugme F1 na tastaturi možete otvoriti isti prozor koji se dobija klikom na ovo dugme.
+ </li>
+			<li><b>"Tutorial"</b> -  Klikom na ovo dugme možete pokrenuti ovaj tutorial. </li>
+    </ul>
+</body>
+
+</html>

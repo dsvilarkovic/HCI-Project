@@ -1,0 +1,15 @@
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\Projekat33BW.csprojResolveAssemblyReference.cache
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\MainWindow.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\PrikazSpomenika.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\RadSaPodacima\AddEtiketa.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\RadSaPodacima\AddSpomenik.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\RadSaPodacima\AddTipSpomenika.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\RadSaPodacima\EditEtiketa.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\RadSaPodacima\EditSpomenik.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\RadSaPodacima\EditTipSpomenika.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\TabelaEtiketa.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\TabelaTipova.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\App.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\Projekat33BW_MarkupCompile.cache
+C:\Users\Dusan\Documents\1FAKS\HCI\MojProjekat33BW\Projekat33BW\Projekat33BW\obj\Release\Projekat33BW_MarkupCompile.lref

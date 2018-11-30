@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CF1734A0-946E-4BA2-A7B8-C763026C5861}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Projekat33BW</RootNamespace>
+    <AssemblyName>Projekat33BW</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>images_q=tbn_ANd9GcQmjcbArMlMER2Q7cjcOKelZ9PW_ifAdf16bsCJDDxQGFaVJGA3.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Notifications.Wpf, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Notifications.Wpf.0.1.1\lib\net461\Notifications.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ToastNotifications, Version=2.2.5.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.2.2.5\lib\net40\ToastNotifications.dll</HintPath>
+    </Reference>
+    <Reference Include="ToastNotifications.Messages, Version=2.2.5.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.Messages.2.2.5\lib\net40\ToastNotifications.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.16\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFCustomMessageBox, Version=1.0.7.39267, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFCustomMessageBox.1.0.7\lib\WPFCustomMessageBox.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BoolToDaNe.cs" />
+    <Compile Include="ColorConverter.cs" />
+    <Compile Include="CountGreaterThanZeroConverter.cs" />
+    <Compile Include="CursorHelper.cs" />
+    <Compile Include="EtiketeConverter.cs" />
+    <Compile Include="Help\ShowHelp.xaml.cs">
+      <DependentUpon>ShowHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SerbianMessageBox.xaml.cs">
+      <DependentUpon>SerbianMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TreeView.xaml.cs">
+      <DependentUpon>TreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TutorialMaker.cs" />
+    <Compile Include="Utils\HelpProvider.cs" />
+    <Compile Include="Validation\ComboBoxValidation.cs" />
+    <Compile Include="Validation\DateValidationParser.cs" />
+    <Compile Include="OsnovniPodaci\BazaPodataka.cs" />
+    <Compile Include="Komande\RoutedCommands.cs" />
+    <Compile Include="OsnovniPodaci\Spomenik.cs" />
+    <Compile Include="OsnovniPodaci\TipSpomenika.cs" />
+    <Compile Include="PrikazSpomenika.xaml.cs">
+      <DependentUpon>PrikazSpomenika.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RadSaPodacima\AddEtiketa.xaml.cs">
+      <DependentUpon>AddEtiketa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RadSaPodacima\AddSpomenik.xaml.cs">
+      <DependentUpon>AddSpomenik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RadSaPodacima\AddTipSpomenika.xaml.cs">
+      <DependentUpon>AddTipSpomenika.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RadSaPodacima\EditEtiketa.xaml.cs">
+      <DependentUpon>EditEtiketa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RadSaPodacima\EditSpomenik.xaml.cs">
+      <DependentUpon>EditSpomenik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RadSaPodacima\EditTipSpomenika.xaml.cs">
+      <DependentUpon>EditTipSpomenika.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TabelaEtiketa.xaml.cs">
+      <DependentUpon>TabelaEtiketa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TabelaTipova.xaml.cs">
+      <DependentUpon>TabelaTipova.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\IdEtiketeValidation.cs" />
+    <Compile Include="Validation\IdSpomenikValidation.cs" />
+    <Compile Include="Validation\IdTipSpomenikaValidation.cs" />
+    <Compile Include="Validation\NameValidation.cs" />
+    <Compile Include="Validation\NumericValidationRule.cs" />
+    <Page Include="Help\ShowHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OsnovniPodaci\Etiketa.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PrikazSpomenika.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RadSaPodacima\AddEtiketa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RadSaPodacima\AddSpomenik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RadSaPodacima\AddTipSpomenika.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RadSaPodacima\EditEtiketa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RadSaPodacima\EditSpomenik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RadSaPodacima\EditTipSpomenika.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SerbianMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabelaEtiketa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabelaTipova.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\worldMap.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ExpressPurchase.jpg" />
+    <Resource Include="Images\fruska_gora.jpg" />
+    <Resource Include="Images\pescar.jpg" />
+    <Resource Include="Images\planina.jpg" />
+    <Resource Include="Images\Sanddunes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\qmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images_q=tbn_ANd9GcQmjcbArMlMER2Q7cjcOKelZ9PW_ifAdf16bsCJDDxQGFaVJGA3%281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images_q=tbn_ANd9GcQmjcbArMlMER2Q7cjcOKelZ9PW_ifAdf16bsCJDDxQGFaVJGA3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\images_q=tbn_ANd9GcQmjcbArMlMER2Q7cjcOKelZ9PW_ifAdf16bsCJDDxQGFaVJGA3%281%29.ico" />
+    <Resource Include="Images\universal-studio-usa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\if_Technology_Mix_-_Final-23_998680.png" />
+    <Resource Include="Images\info.png" />
+    <Resource Include="Images\interface.png" />
+    <Resource Include="Images\mission.png" />
+    <Resource Include="Images\pin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tutorial\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\question-mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Help\MainWindow.html" />
+    <Resource Include="Images\addspomenik_listaetiketa.gif" />
+    <Resource Include="Images\nadjiikonu.gif" />
+    <Resource Include="Images\primer_etiketa_pretraga.gif" />
+    <Resource Include="Images\dragndrop.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

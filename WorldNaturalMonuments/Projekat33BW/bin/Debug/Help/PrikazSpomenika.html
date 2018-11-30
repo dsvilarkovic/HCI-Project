@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Prikaz spomenika</title>
+    <style>
+		img{width:800px; height:400px};
+		body {font-family: Helvetica};
+	</style>
+</head>
+<body>
+    <p><a href="MainWindow.html">Pocetna</a>&nbsp;&nbsp;<a href="AddSpomenik.html">Spomenici</a>&nbsp;&nbsp;<a href="AddTipSpomenika.html">Tipovi spomenika</a>&nbsp;&nbsp;<a href="AddEtiketa.html">Etikete</a>&nbsp;&nbsp;<a href="PrikazSpomenika.html">Tabela spomenika</a>&nbsp;&nbsp;<a href="TabelaTipova.html">Tabela tipova spomenika</a>&nbsp;&nbsp;<a href="TabelaEtiketa.html">Tabela etiketa</a></p>
+    <h1>Prikaz spomenika</h1>
+	<img src= "primer_spomenik_pretraga.gif"/>
+	<p> <b> <i>Slika: Primer izvršavanje pretrage nad prirodnim spomenicima </i> </b>
+    <div>
+        Pomoću ovog dijaloga možete videti prikaz svih spomenika. 
+        Postoji pretraga spomenika, koja se pokreće klikom na dugme "Pretraži", nakon čega se prikažu svi tipovi spomenika u tabeli, koji odgovaraju unosu teksta u polju za pretragu.
+        Da bismo poništili pretragu, moramo pritisnuti dugme "Poništi pretragu", čime se pogled na tabelu vraća na tabelu svih spomenika koji postoje u aplikaciji, po svim kriterijumima.
+        <p>Akcije nad spomenicima:</p>
+        <ul>
+            <li><b>"Dodaj spomenik"</b> - Otvara prozor za unos novog spomenika. Spomenik se može dodati i kombinacijom dugmadi sa tastature CTRL+S.</li>
+            <li><b>"Izmeni spomenik"</b>
+            - Otvara prozor za ažuriranje prethodno odabranog spomenika u okviru tabele.</li>
+            <li><b>"Obriši spomenik"</b>
+            - Uklanja se prethodno odabran spomenik u okviru tabele.</li>
+        </ul>
+
+		<p>Pretraga i parametri pretrage:</p>
+		<p>Pretraga se vrši po jednom delu reči bilo koje ćelije jedne vrste u tabeli. Parametri za pretragu služe da se omogući bolji način pretraživanja po oblasti ili podatku koji nije blizak znanju korisnika.</p>
+        <ul>
+            <li><b>"Pretraga po reči"</b> - Unosom sa tastature možete uneti deo reči po kojem Vam je poznata bilo kakva informacija o podacima u tabeli..</li>
+            <li><b>"Obeleži traženu reč"</b>
+            - Klikom na ovaj kvadrat reč u tabeli se može obeležiti pozadinskom bojom onog dela reči u datoj tabeli koji Vam je poznat. Za demonstraciju, unesite u polje za unos neko slovo koje se spominje u tabeli, i kliknite na ovaj kvadrat.</li>
+            <li><b>"Ignoriši mala/velika slova?"</b>
+            - Klikom na ovaj kvadrat možete naglasiti da želite ili ne želite da deo reči po kojoj tražite bude osetljiv na mala ili velika slova. Primer, pretragom 'mob' za reči 'Automobil' i 'Moba', u pretrazi neosetljivoj na mala ili velika slova, će se kao rezultat pretrage naći obe reči, dok će u osetljivoj pretrazi na mala ili velika slova, kao rezultat dobiti samo 'Automobil'.</li>
+			<li> 
+				<b>"Omogući dodatne parametre" kvadratić: </b> Ova grupacija služi da se omoguće podaci na korišćenje. Ukoliko nije obeležen kvadratić za dodatne parametre, neće se pri pretrazi uzimati u obzir bilo koji od kvadratića sa parametrima u pretrazi. U suprotnom, svaki ulazi u obzir.
+				<ul>
+					<li><b>Ekološki ugrožen?</b> - Klikom na kvadratić potvrdjujete da je spomenik koji pretražujete ekološki ugrožen.</li>
+					<li><b>Stanište ugroženih vrsta?</b> -Klikom na kvadratić potvrdjujete da je ono što pretražujete stanište ugroženih vrsta npr. neke životinje, biljke ili vrsta gljive.</li>
+					<li><b>Naseljeno mesto?</b> -Klikom na kvadratić potvrdjujete da se traženi spomenik nalazi na naseljenom mestom, tj. na mestu gde ima živih bića.</li>
+				</ul>
+			</li>
+		</ul>
+    </div>
+	
+
+</body>
+</html>

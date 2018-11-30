@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Rad sa spomenicima</title>
+	<style>
+		img{width:400px; height:200px};
+		body {font-family: Helvetica};
+	</style>
+</head>
+<body>
+    <p><a href="MainWindow.html">Pocetna</a>&nbsp;&nbsp;<a href="AddSpomenik.html">Spomenici</a>&nbsp;&nbsp;<a href="AddTipSpomenika.html">Tipovi spomenika</a>&nbsp;&nbsp;<a href="AddEtiketa.html">Etikete</a>&nbsp;&nbsp;<a href="PrikazSpomenika.html">Tabela spomenika</a>&nbsp;&nbsp;<a href="TabelaTipova.html">Tabela tipova spomenika</a>&nbsp;&nbsp;<a href="TabelaEtiketa.html">Tabela etiketa</a></p>
+    <h1>Rad sa spomenicima</h1>
+    <div>
+		<img src = "addspomenik_osnovni.png" width= "800" height="500"> </img>
+		<p> <b> <i>Slika: forma dodavanja ili ažuriranja spomenika </i> </b>
+		<h2>Teorijski deo o spomenicima (sa početne stranice pomoći): </h2>
+			<blockquote>
+				Sa Wikipedije: 
+				<blockquote>
+					<i>
+					Spomenik prirode ili prirodna baština je element prirode koji je nekim aktom države stavljen pod  
+					zaštitu kako bi se očuvale njegove izvorne prirodne vrednosti. Često su to istovremeno i nacionalni
+					parkovi, ali može biti i jedan samostalni objekat, na primer vrlo staro stablo, ili manja površina
+					jasno odvojena od svoje okoline, s izrazitim geološkim svojstvima.
+					</i>
+				</blockquote>
+				Prirodni spomenik ovde predstavlja mesto izuzetne prirodne lepote ili značaja. Može se nalaziti 
+				bilo gde na svetu i mora se slagati sa normama i zakonima koje postoje u zakonskim aktima države u kojoj se spomenik nalazi.
+				Spomenik prirode može da bude:
+						<ul>
+						<li>geološki (hidrogeološki, paleontološki, petrološka, mineraloški, strukturnogeološki i dr)</li>
+						<li>geomorfološki</li>
+						<li>speleološki (pećina, jama i dr)</li>
+						<li>hidrološki (ceo ili deo vodotoka, kao slap, jezero dr.)</li>
+						<li>botanički (retki ili značajni primerci biljnog sveta, kao pojedinačno stablo, drvoredi, parkovi, botaničke bašte i dr).</li>
+						</ul>
+				Neki primeri spomenika bi mogli biti: Jeloustoun u SAD, Fruška gora u Vojvodini, Đavolja varoš u okolini Kuršumlije itd. <br>
+				<br>
+				U okviru aplikacije:
+				<blockquote>
+					<i>
+				Svaki spomenik je opisan preko: svoje jedinstvene ljudski-čitljive oznake koju unosi korisnik,
+				imena, opisa, tipa, klime u kojoj se nalazi, ikonice, da li je ekološki ugrožen, da li je stanište
+				ugroženih vrsta, da li je u naseljenom regionu ili ne, turističkog statusa, godišnjeg prihoda od
+				turizma, i datuma otkrivanja.
+					</i>
+				</blockquote>
+				<br> 
+				Više o spomenicima prirode možete naći na ovoj <a href="https://sr.wikipedia.org/sr-el/%D0%A1%D0%BF%D0%BE%D0%BC%D0%B5%D0%BD%D0%B8%D0%BA_%D0%BF%D1%80%D0%B8%D1%80%D0%BE%D0%B4%D0%B5">adresi </a>.
+				<br>
+			</blockquote>
+		<h2>Aplikativni deo rada sa spomenicima: </h2>
+        Pomoću ovog dijaloga možete dodati ili ažurirati spomenik popunjavanjem polja i pritiskom na dugme "Sačuvaj". Obavezna polja za unos su
+        "Id", "Ime" i "Tip spomenika", ostala polja su opciona. 
+        
+        <p>Polja za unos:</p>
+        <ul>
+            <li><b>"Id"</b> - Jedinstvene ljudski čitljive oznake spomenika u okviru aplikacije.</li>
+            <li><b>"Ime"</b> - Proizvoljno ime.</li>
+			
+            <li><b>"Opis"</b> - Detaljniji opis spomenika.</li>
+			<li>
+				<b>"Tip spomenika"</b> - Predstavlja način grupisanja spomenika. Iz liste se mogu izabrati postojeći spomenici klikom na 
+				ovo dugme čime se otvara lista za izbor tipa.
+				<p><img src = "addspomenik_combobox_tip.png"/> </p>
+				<p> <b> <i>Slika: izbor tipa iz liste spomenika </i> </b>
+			</li>
+			
+			<li>
+				<b>"Dodaj tip spomenika"</b> - Pritiskom ovog dugmeta otvara se forma za pravljenje novog tipa koje će biti prikazano u "Tip spomenika" lista.
+				Dodavanju se može pristupiti i preko prečice CTRL+T.
+				<p><img src = "addspomenik_dodajtip.png" /> </p>
+				<p> <b> <i>Slika: forma odakle se otvara </i> </b>
+			</li>
+						
+			
+			<li>
+				<b>"Klima na mestu spomenika"</b> - Predstavlja klimu koju može da ima spomenik na toj poziciji. 
+				Mogući tipovi su fiksni i to su: Polarna, Kontinentalna, Umereno kontinentalna, Pustinjska, Suptropska, Tropska.
+				
+				<p><img src = "addspomenik_klima_combobox.png" /> </p>
+				<p> <b> <i>Slika: Lista sa klimama koje može spomenik da ima </i> </b>
+			</li>
+			
+			
+			<li>
+				<b>"Ikonica spomenika"</b> - Klikom na dugmi "Nađi ikonicu" može se pristupiti slikama koje postoje na računaru odakle pokrećete aplikaciju.
+				Animacija ispod služi da predstavi kako bi to moglo da izgleda.
+				
+				<p><img src = "nadjiikonu.gif" /> </p>
+				<p> <b> <i>Animacija: Primer dodavanje ikonice spomeniku.
+				Klikom se otvara forma sa izbor slike iz nekog fajla iz računara i na tom ili nekom drugom mestu možete odabrati 
+				ikonicu koja vam odgovara klikom na nju jednom pa pritiskom dugmeta "Open", ili dvoklikom na sliku se automatski dodaje 
+				na formu za spomenik.</i> </b>
+			</li>
+			
+			
+          
+            <li><b>"Ekološki ugrožen?"</b> - Klikom na kvadratić potvrdjujete da je spomenik ekološki ugrožen.</li>
+			<li><b>"Stanište ugroženih vrsta?"</b> - Klikom na kvadratić potvrdjujete da je ovo stanište ugroženih vrsta npr.
+			neke životinje, biljke ili vrsta gljive.</li>
+			<li><b>"Naseljeno mesto?"</b> - Klikom na kvadratić potvrdjujete da se spomenik nalazi na naseljenom mestom, tj. 
+		    na mestu gde ima živih bića.</li>
+			
+			<li>
+				<b>"Turistički status"</b> - Predstavlja status koji može imati spomenik. Status može biti: eksploatisan, dostupan,nedostupan.
+				
+				<p><img src = "addspomenik_status.png" /> </p>
+				<p> <b> <i>Slika: Lista sa klimama koje može spomenik da ima </i> </b>
+			</li>
+			
+			<li><b>"Godišnji prihod(u dolarima, USD)"</b> - Predstavlja prihod koji može a i ne mora imati spomenik prirode.
+			Kao što i samo ime kaže, prihod je u dolarima i na godišnjem nivou.</li>
+			
+			<li><b>"Datum održavanja"</b> - Specificira datum otkrivanja spomenika unosom datuma u okviru tekstualnog polja
+			unosom sa tastature u formi dd/mm/yyyy, gde dd predstavlja dvocifreni broj dana u mesecu, mm predstavlja dvocifrenu 
+			formu unosa datuma npr. 01 ili 12, a yyyy četvorocifreni prikaz godine otkrivanja. Ovaj format odgovara evropskom
+			sistemu obeležavanja datuma.</li>
+            
+            <li>
+				<b>"Dodaj etiketu"</b> - Pritiskom ovog dugmeta otvara se forma za pravljenje nove etikete koje će biti prikazano u "Listi postojećih etiketa",
+				tj. etiketa koje su unete, a nisu u okviru ovog spomenika.
+				Dodavanju se može pristupiti i preko prečice CTRL+E.
+				<p><img src = "addspomenik_dodajtip.png" /> </p>
+				<p> <b> <i>Slika: forma odakle se otvara </i> </b>
+			</li>
+			
+			 <li>
+				<b>"Lista postojećih etiketa i Lista spomenikovih etiketa"</b> - Ovo su liste gde prva predstavlja listu onih koje postoje u aplikaciji,
+				a nisu unete u ovaj spomenik, a druga predstavlja listu etiketa koje postoje u okviru aplikacije i u okviru ovog spomenika.
+				Ispod je prikaz animacije kako se mogu unositi etikete.
+				<p><img src = "addspomenik_listaetiketa.gif" /> </p>
+				<p> <b> <i>Animacija: Primer unosa etiketa</i> </b>
+			</li>
+			<br>
+			
+        </ul>
+
+		<h4>
+		Pritiskom na dugme "Potvrdi" će se dodati novi tip spomenika. <br>
+		Pritiskom na dugme "Odustani" prozor se zatvara bez čuvanja podataka koje ste uneli. <br>
+		Pritiskom na dugme "Tutorial" otvoriće se odgovarajući tutorial za ovaj prozor ukoliko postoji.<br>
+		Pritiskom na dugme "Pomoć" otvoriće se ponovo ova pomoć. Pomoći možete pristupiti i pritiskom na dugme na tastaturi F1 iz forme spomenika.
+		</h4>
+    </div>
+</body>
+</html>
